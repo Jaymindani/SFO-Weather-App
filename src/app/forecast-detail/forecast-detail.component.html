@@ -1,0 +1,64 @@
+<div style="padding-left:20px;">
+    <h3>
+        <a> FORECAST DETAIL</a>
+    </h3>
+
+    <div>
+        <h3>
+                {{hourlyForecasts[0].FCTTIME.weekday_name}} {{ hourlyForecasts[0].FCTTIME.mday + ' ' + hourlyForecasts[0].FCTTIME.mon_abbrev
+            }}
+
+        </h3>
+    </div>
+    <div *ngIf="hourlyForecasts.length == 0">
+        <h4 style="color:red;"> Hourly Data Not Available</h4>
+    </div>
+    <div *ngIf="hourlyForecasts.length > 0">
+        <table>
+            <thead>
+                <tr>
+                    <th>                     
+                    </th>
+                    <td class="day" *ngFor="let timeHeader of hourlyForecasts">
+                        <div style="padding: 5px;"> {{ timeHeader.FCTTIME.civil}} </div>
+                        <div class="icon-weather icon i-1-s"></div>
+                    </td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th></th>
+                    <td class="day" *ngFor="let item of hourlyForecasts">
+                        <img class="icon" [alt]="item.icon" [src]="item.icon_url" />
+                    </td>
+
+                </tr>
+                <tr>
+                    <th>Condition</th>
+                    <td class="day" *ngFor="let item of hourlyForecasts">
+                        <span style="font-size: 10px;word-wrap: break-word;">{{item.condition}}</span>
+                    </td>
+
+                </tr>
+                <tr>
+                    <th>Temp&deg;F</th>
+                    <td class="day" *ngFor="let item of hourlyForecasts">
+                        <span style="word-wrap: break-word;" class="small-temp">{{item.temp.english}}</span>
+                    </td>
+
+                </tr>
+                <tr>
+                    <th>Humidity</th>
+                    <td class="day" *ngFor="let item of hourlyForecasts">
+                        <span style="word-wrap: break-word;">{{item.humidity}}</span>
+                    </td>
+
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <br>
+    <button type="button" class="btn btn-primary btn-warning" (click)="goBack()">
+        <i class="fa fa-arrow-circle-left yellowmore mright5"></i> Back
+    </button>
+</div>

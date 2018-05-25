@@ -1,0 +1,41 @@
+<h3 style="padding-left:20px;">
+  <a>
+    WEATHER FORECAST
+  </a>
+</h3>
+<div class="panel-body">
+  <div class="panel-list">
+    <ul>
+      <li *ngFor="let item of simpleForecast.forecastday">
+        <div (click)="viewForecastDetail(item.date)">
+          {{ item.conditions}}
+          <h3>
+            {{ item.date.weekday_short }}
+          </h3>
+          <h4>
+            {{ item.date.monthname_short + ' ' + item.date.day }}
+          </h4>
+          <div>
+            <img class="icon" [alt]="item.icon" [src]="item.icon_url" />
+          </div>
+          <div>
+            <div class="temp">
+              <span class="large-temp"> {{ item.high.celsius}}&deg;</span>
+              <span class="small-temp">/{{ item.low.celsius}}&deg;C</span>
+            </div>
+            <span style="font-size: 18px;display:block;
+            width:100px;
+            word-wrap:break-word;">{{ item.conditions}}</span>
+          </div>
+
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <br>
+  <button type="button" class="btn btn-primary btn-warning" (click)="goBack()">
+      <i class="fa fa-arrow-circle-left yellowmore mright5"></i> Back
+  </button>
+
+</div>

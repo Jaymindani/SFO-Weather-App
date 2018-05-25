@@ -1,0 +1,43 @@
+<div style="display: block;width:70%;">
+  <h3 style="padding-left:20px;">
+    <a>CURRENT WEATHER</a>
+  </h3>
+
+  <div class="weather-box">
+    <div> {{ weatherData.display_location.full}} </div>
+    <div> {{ weatherData.local_time_rfc822}} </div>
+    <div> {{ weatherData.weather}} </div>
+    <br>
+
+    <div>
+      <img style="float:left;height:64px;width:64px" [alt]="weatherData.weather" [src]="weatherData.icon_url" />
+      <div style="padding-left:10px;float:left">
+        <div style="float:left;margin-top:-3px;font-size:60px">
+          <span>{{ weatherData.temperature_string}} </span>
+        </div>
+      </div>
+      <div style="float:right;padding-left:5px;line-height:22px;padding-top:2px;min-width:43%">
+        <div>
+          Precipitation:
+          <span> {{ weatherData.precip_today_in}} </span>
+        </div>
+        <div>
+          Humidity:
+          <span> {{ weatherData.relative_humidity }} </span>
+        </div>
+        <div>
+          Wind:
+          <span> {{ weatherData.wind_kph }} km/h </span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="full-width-button">
+    <a (click)="goToForecast()">
+      <div style="padding: 13px 25px 13px 15px;">See Forecast</div>
+      <div class="arrow"></div>
+    </a>
+
+  </div>
+</div>
